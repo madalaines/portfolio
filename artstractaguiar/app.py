@@ -4,7 +4,7 @@ from .models import get_user_by_email, verify_password, create_user, insert_artw
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 # Create the blueprint for Artstractaguiar
-artstractaguiar_app = Blueprint('artstractaguiar', __name__)
+artstractaguiar_app = Blueprint('artstractaguiar', __name__, template_folder='templates')
 
 artstractaguiar_app.secret_key = 'sdsjfoe0wu4adj*!fk'
 login_manager = LoginManager()
