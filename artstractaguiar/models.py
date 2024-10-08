@@ -5,7 +5,7 @@ from flask import abort
 from flask_login import current_user
 
 def get_db_connection():
-    conn = sqlite3.connect('artshop.db')
+    conn = sqlite3.connect('artstractaguiar/artshop.db')
     conn.row_factory = sqlite3.Row
     return conn
 
