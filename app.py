@@ -1,11 +1,10 @@
 from flask import Flask, render_template
 from artstractaguiar.app import artstractaguiar_app  # Import the second app
-from flask_login import LoginManager
+from auth import login_manager
 
 app = Flask(__name__)
 
 # Initialize LoginManager here
-login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Register Artstractaguiar as a blueprint
