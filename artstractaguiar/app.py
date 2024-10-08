@@ -1,19 +1,14 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .draw import generate_random_artwork
 from .models import get_user_by_email, verify_password, create_user, insert_artwork, get_db_connection, add_to_cart, get_cart, remove_from_cart, admin_required, login_user, add_favorites, remove_favorites, get_favorites
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_login import UserMixin, login_user, login_required, logout_user, current_user
 from ..app import login_manager  # Import login_manager from main app
 
 # Create the blueprint for Artstractaguiar
 artstractaguiar_app = Blueprint('artstractaguiar', __name__, template_folder='templates')
-
 artstractaguiar_app.secret_key = 'sdsjfoe0wu4adj*!fk'
 
-
-@login_manager.unauthorized_handler
-def unauthorized_callback():
-    return redirect(url_for('register'))
-
+# User class for Flask-Login
 class User(UserMixin):
     def __init__(self, id, username, is_admin=False):
         self.id = id
@@ -32,6 +27,7 @@ class User(UserMixin):
     def get_id(self):
         return str(self.id)
 
+# User loader for Flask-Login
 @login_manager.user_loader
 def load_user(user_id):
     conn = get_db_connection()
@@ -42,6 +38,11 @@ def load_user(user_id):
     if user:
         return User(id=user['id'], username=user['username'], is_admin=user['is_admin'] == 1)
     return None
+
+# Unauthorized handler for login-required views
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect(url_for('artstractaguiar.register'))
 
 @artstractaguiar_app.route('/print_admins')
 def print_admins():
