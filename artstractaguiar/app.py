@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .draw import generate_random_artwork
 from .models import get_user_by_email, verify_password, create_user, insert_artwork, get_db_connection, add_to_cart, get_cart, remove_from_cart, admin_required, login_user, add_favorites, remove_favorites, get_favorites
 from flask_login import UserMixin, login_user, login_required, logout_user, current_user
-from ..app import login_manager  # Import login_manager from main app
+from app import login_manager  # Import login_manager from main app
 
 # Create the blueprint for Artstractaguiar
 artstractaguiar_app = Blueprint('artstractaguiar', __name__, template_folder='templates')
