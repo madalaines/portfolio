@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="box">
+    <h2>Welcome to Artstractaguiar!</h2>
+    <p>Explore our collection of unique and abstract artworks.</p>
+    <div class="artwork-container">
+        {% for artwork in artworks %}
+        <div class="artwork-item">
+            <div class="artwork-image">
+                <img src="{{ url_for('static', filename='artwork/' + artwork['filename']) }}" alt="Artwork">
+            </div>
+            <div class="artwork-details">
+                <h3>{{ artwork['name'] }}</h3>
+                <p>Price: ${{ artwork['price'] }}</p>
+            </div>
+            {% if artwork.id not in user_favorites %}
+            <form action="{{ url_for('add_to_favorites', artwork_id=artwork.id) }}" method="post">
+                <button type="submit">Add to Favorites</button>
+            </form>
+            {% else %}
+            <form action="{{ url_for('remove_from_favorites', artwork_id=artwork.id) }}" method="post">
+                <button type="submit">Remove from Favorites</button>
+            </form>
+            {% endif %}
+            <form action="{{ url_for('add_artwork_to_cart', artwork_id=artwork['id']) }}" method="post">
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

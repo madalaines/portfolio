@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="box">
+    <h1>Cart</h1>
+    <div class="artwork-container">
+        {% for item in cart_items %}
+        <div class="artwork-item">
+            <img src="{{ url_for('static', filename='artwork/' + item['filename']) }}" alt="{{ item['name'] }}">
+            <p>{{ item['name'] }}</p>
+            <p>${{ item['price'] }}</p>
+            <p>Quantity: {{ item['quantity'] }}</p>
+            <form action="{{ url_for('remove_artwork_from_cart', artwork_id=item['id']) }}" method="post">
+                <button type="submit">Remove from Cart</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <p>To proceed and pay, email me at: mvtacosta@gmail.com</p>
+    <p>For more information on how to proceed, check the Frequently Asked Questions.</p>
+</div>
+{% endblock %}

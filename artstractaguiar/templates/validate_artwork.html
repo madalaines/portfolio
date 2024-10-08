@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="box">
+<h1>Validate Artwork</h1>
+
+<div class="artwork-container">
+    {% for artwork in artworks %}
+        <div class="artwork-item">
+            <img src="{{ url_for('static', filename='artwork/' + artwork['filename']) }}" alt="Artwork">
+            <form action="{{ url_for('approve_artwork', artwork_id=artwork['id']) }}" method="post">
+                <input type="text" name="name" placeholder="Name">
+                <input type="number" name="price" placeholder="Price">
+                <button type="submit">Approve</button>
+            </form>
+            <form action="{{ url_for('reject_artwork', artwork_id=artwork['id']) }}" method="post">
+                <button type="submit">Reject</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+
+<form action="{{ url_for('generate_artwork') }}" method="get">
+    <button type="submit">Generate New Artwork</button>
+</form>
+</div>
+{% endblock %}

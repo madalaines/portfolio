@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Validate Artwork</h1>
+
+<img src="{{ url_for('static', filename='artwork/' + artwork['filename']) }}" alt="Artwork">
+
+<form action="{{ url_for('approve_artwork', artwork_id=artwork['id']) }}" method="post">
+    <button type="submit">Approve</button>
+</form>
+
+<form action="{{ url_for('reject_artwork', artwork_id=artwork['id']) }}" method="post">
+    <button type="submit">Reject</button>
+</form>
+{% endblock %}

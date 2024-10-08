@@ -1,0 +1,234 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 1000;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+.logo-container {
+    margin: 0;
+}
+
+.logo {
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #ccc;
+}
+
+.nav-links img {
+    height: 30px; /* Resize the icons to a smaller size */
+}
+
+.main-content {
+    flex: 1;
+    padding: 80px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.box img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #ccc;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-right: 40px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"] {
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #555;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+button {
+    background-color: #ccc;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+button:hover {
+    background-color: #aaa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    margin: 0;
+}
+
+.faq-list {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.faq-question {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: left; /* Align text to the left */
+    position: relative;
+}
+
+.faq-question::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+}
+
+.faq-content {
+    display: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: left; /* Align text to the left */
+}
+
+.faq-item.active .faq-question {
+    background-color: #ddd;
+}
+
+.faq-item.active .faq-question::after {
+    content: "▲";
+}
+
+.faq-item.active .faq-content {
+    display: block;
+}

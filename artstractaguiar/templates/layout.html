@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else "Artstractaguiar" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+            </a>
+        </div>
+        <nav class="navigation">
+            <ul class="nav-links">
+                <li><a href="{{ url_for('favorites') }}"><img src="{{ url_for('static', filename='images/favorites.png') }}" alt="Favorites"></a></li>
+                <li><a href="{{ url_for('cart') }}"><img src="{{ url_for('static', filename='images/cart.png') }}" alt="Cart"></a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Artstractaguiar. All rights reserved.</p>
+        <p><a href="{{ url_for('faq') }}">FAQ</a> | <a href="{{ url_for('directions') }}">Directions</a></p>
+    </footer>
+</body>
+</html>
+
